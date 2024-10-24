@@ -1,0 +1,95 @@
+3. settings.py 
+from pathlib import Path
+import os
+
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+go miniwebtool, django secret key generator
+
+4. create new file Procfile
+web: gunicorn KPMB.wsgi --log-file - 
+
+5. terminal :
+pip3 install gunicorn
+pip3 install dj-database-url
+
+6. settings.py
+import os
+import dj_database_url
+
+7. bawah sekali,
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#setting for public database
+db_from_env =dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+8. terminal 
+pip3 install psycopg2-binary
+
+9. settings
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+
+10. terminal
+pip3 install whitenoise
+
+11. settings
+MIDDLEWARE
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+12. terminal
+pip3 freeze > requirements.txt
+
+13. create new file runtime.txt
+terminal py --version
+python-3.10.0
+
+// done w vsc
+
+1. github. new repository
+name : deploy_KPMB"
+
+2. in files, right click folder deploy_" open gitbash
+
+3. paste git init enter
+ git add . enter
+git commit -m "backup 1" enter
+git config --global user.email "nadeeah2005@gmail.com" enter
+git config --global user.name "Toki" enter
+git commit -m "backup 1" enter
+git remote add origin https://github.com/nadjhri/deploy_KPMB.git enter
+git push -u origin master enter
+refresh gitbuh website
+
+//done w git
+
+1.pyhtonanywhere
+new console bash
+2.github repository deploy_ code copy link
+3. python bash console
+git clone paste link
+mkvirtualenv --python=/usr/bin/python3.10 myKPMB-virtual enter
+ls enter
+cd deploy_KPMB enter
+ls enter
+cd KPMB enter
+ls enter
+dah jumpa manage.py , stop
+4. open in new tab WEB, bash biar bukak
+add new web. next
+manual config > python 3.10
+virtualenv > go bash console > copy paste myKPMB-virtual enter (at virtual env name!)
+WSGI config file > tekan link > select all coding DELETE > paste coding dalam ws grp dcs 4D
+open in new tab FILES >deploy_KPMB > KPMB > copy /home/nadjhri/deploy_KPMB/KPMB
+paste coding path = '/home/nadjhri/deploy_KPMB/KPMB'
+5. go files page > tekan KPMB untuk cari settings > settings > os.environ['DJANGO_SETTINGS_MODULE'] = 'KPMB.settings'
+save , reload
+// go to bash console
+6. pip install -r requirements.txt enter
+7. python manage.py createsuperuser enter
+python manage.py migrate enter
+8. open in new tab WEB > tekan reload > click config for link > DisallowedHost means SUCCESS
+9. go to files > tekan KPMB untuk cari settings > click settings.py > ALLOWED_HOSTS = ['nadjhri.pythonanywhere.com'] > save , reload > go disalloed host page n refresh > https://nadjhri.pythonanywhere.com/KPMB/ link /KPMB
+done!!!!!!!!!!1
